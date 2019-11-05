@@ -20,9 +20,14 @@ rabbitmq:
       exchange: bss
       routing-key: bss
     csf:
-      queue: csf
-      exchange: csf
-      routing-key: csf
+      funcA:
+        queue: csfA
+        exchange: csfA
+        routing-key: csfA
+      funcB:
+        queue: csfA
+        exchange: csfA
+        routing-key: csfA
   # 发送端
   send:
     bss:
