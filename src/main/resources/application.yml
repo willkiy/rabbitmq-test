@@ -1,0 +1,35 @@
+rabbitmq:
+  # MQ server
+  server:
+    forward:
+      host: 192.168.56.101
+      port: 5672
+      username: admin
+      password: admin
+      virtual-host: /
+    csf:
+      host: 192.168.56.102
+      port: 5672
+      username: admin
+      password: admin
+      virtual-host: /
+  # 监听端
+  listen:
+    bss:
+      queue: bss
+      exchange: bss
+      routing-key: bss
+    csf:
+      queue: csf
+      exchange: csf
+      routing-key: csf
+  # 发送端
+  send:
+    bss:
+      exchange: bss
+      routing-key: bss
+    # 各产品
+    product:
+      cke:
+        exchange: cke
+        routing-key: cke
