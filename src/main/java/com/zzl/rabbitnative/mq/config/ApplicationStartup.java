@@ -1,4 +1,4 @@
-package com.zzl.rabbitnative.mq;
+package com.zzl.rabbitnative.mq.config;
 
 import com.zzl.rabbitnative.mq.listeners.MqListener;
 import org.springframework.beans.factory.support.DefaultListableBeanFactory;

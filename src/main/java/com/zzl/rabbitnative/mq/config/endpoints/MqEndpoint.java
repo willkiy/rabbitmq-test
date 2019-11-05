@@ -1,4 +1,4 @@
-package com.zzl.rabbitnative.mq.endpoints;
+package com.zzl.rabbitnative.mq.config.endpoints;
 
 import com.rabbitmq.client.Channel;
 import com.rabbitmq.client.Connection;

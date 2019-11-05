@@ -1,6 +1,5 @@
-package com.zzl.rabbitnative.mq.endpoints;
+package com.zzl.rabbitnative.mq.config.endpoints;
 
-import com.zzl.rabbitnative.mq.endpoints.MqEndpoint;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 

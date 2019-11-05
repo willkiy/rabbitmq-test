@@ -1,9 +1,8 @@
 package com.zzl.rabbitnative.mq.listeners;
 
 import com.rabbitmq.client.*;
-import com.zzl.rabbitnative.mq.MqConst;
-import com.zzl.rabbitnative.mq.endpoints.CsfMqEndpoint;
-import com.zzl.rabbitnative.mq.listeners.MqListener;
+import com.zzl.rabbitnative.mq.config.MqConst;
+import com.zzl.rabbitnative.mq.config.endpoints.CsfMqEndpoint;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.stereotype.Component;

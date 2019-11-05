@@ -1,7 +1,7 @@
 package com.zzl.rabbitnative.mq.senders;
 
 import com.rabbitmq.client.Channel;
-import com.zzl.rabbitnative.mq.endpoints.MqEndpoint;
+import com.zzl.rabbitnative.mq.config.endpoints.MqEndpoint;
 
 import java.io.IOException;
 import java.util.concurrent.TimeoutException;

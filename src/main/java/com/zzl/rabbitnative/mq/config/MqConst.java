@@ -1,4 +1,4 @@
-package com.zzl.rabbitnative.mq;
+package com.zzl.rabbitnative.mq.config;
 
 /**
  * Created by zhangzhaolin on 2019/11/5.

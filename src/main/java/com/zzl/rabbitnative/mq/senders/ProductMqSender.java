@@ -1,7 +1,6 @@
 package com.zzl.rabbitnative.mq.senders;
 
-import com.zzl.rabbitnative.mq.endpoints.ForwardMqEndpoint;
-import com.zzl.rabbitnative.mq.senders.BaseMqSender;
+import com.zzl.rabbitnative.mq.config.endpoints.ForwardMqEndpoint;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.stereotype.Component;
