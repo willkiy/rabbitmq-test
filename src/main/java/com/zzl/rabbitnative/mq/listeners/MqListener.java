@@ -6,5 +6,5 @@ package com.zzl.rabbitnative.mq.listeners;
 public interface MqListener {
 
     // 开启监听
-    void listen();
+    void listen() throws Exception;
 }

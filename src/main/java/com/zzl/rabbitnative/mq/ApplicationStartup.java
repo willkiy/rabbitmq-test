@@ -1,11 +1,13 @@
 package com.zzl.rabbitnative.mq;
 
-import com.zzl.rabbitnative.mq.listeners.impl.BssMqListener;
-import com.zzl.rabbitnative.mq.listeners.impl.CsfMqListener;
-import org.springframework.beans.factory.annotation.Autowired;
+import com.zzl.rabbitnative.mq.listeners.MqListener;
+import org.springframework.beans.factory.support.DefaultListableBeanFactory;
 import org.springframework.context.ApplicationListener;
+import org.springframework.context.ConfigurableApplicationContext;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.event.ContextRefreshedEvent;
+
+import java.util.Map;
 
 /**
  * @ClassName ApplicationStartup
@@ -16,18 +18,20 @@ import org.springframework.context.event.ContextRefreshedEvent;
  **/
 @Configuration
 public class ApplicationStartup implements ApplicationListener<ContextRefreshedEvent> {
-    @Autowired
-    private BssMqListener bssMqListener;
-    @Autowired
-    private CsfMqListener csfMqListener;
+
     @Override
-    public void onApplicationEvent(ContextRefreshedEvent contextRefreshedEvent) {  //项目启动后，执行启动消费者方法
+    public void onApplicationEvent(ContextRefreshedEvent event) {  //项目启动后，执行启动消费者方法
         try {
-            bssMqListener.listen();   //消费者的实现方法
-            csfMqListener.listen();
+            ConfigurableApplicationContext context = (ConfigurableApplicationContext)event.getApplicationContext();
+            DefaultListableBeanFactory factory = (DefaultListableBeanFactory)context.getBeanFactory();
+            Map<String, MqListener> beanMap = factory.getBeansOfType(MqListener.class);
+            // 开启监听
+            for (String beanName: beanMap.keySet()) {
+                MqListener mqListener = beanMap.get(beanName);
+                mqListener.listen();
+            }
         } catch (Exception e) {
             e.printStackTrace();
         }
     }
-
 }

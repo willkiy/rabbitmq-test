@@ -24,10 +24,12 @@ rabbitmq:
         queue: csfA
         exchange: csfA
         routing-key: csfA
+        consumer: com.zzl.rabbitnative.mq.listeners.CsfConsumerA
       funcB:
         queue: csfA
         exchange: csfA
         routing-key: csfA
+        consumer: com.zzl.rabbitnative.mq.listeners.CsfConsumerB
   # 发送端
   send:
     bss:

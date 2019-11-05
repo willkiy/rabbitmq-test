@@ -1,7 +1,7 @@
 package com.zzl.rabbitnative;
 
-import com.zzl.rabbitnative.mq.senders.impl.BssMqSender;
-import com.zzl.rabbitnative.mq.senders.impl.ProductMqSender;
+import com.zzl.rabbitnative.mq.senders.BssMqSender;
+import com.zzl.rabbitnative.mq.senders.ProductMqSender;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;

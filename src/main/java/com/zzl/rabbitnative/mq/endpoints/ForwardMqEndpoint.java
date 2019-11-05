@@ -1,4 +1,4 @@
-package com.zzl.rabbitnative.mq.endpoints.impl;
+package com.zzl.rabbitnative.mq.endpoints;
 
 import com.zzl.rabbitnative.mq.endpoints.MqEndpoint;
 import org.springframework.beans.factory.annotation.Value;
@@ -8,9 +8,9 @@ import org.springframework.stereotype.Component;
  * Created by zhangzhaolin on 2019/11/4.
  */
 @Component
-public class CsfEndpoint extends MqEndpoint {
+public class ForwardMqEndpoint extends MqEndpoint {
 
-    public CsfEndpoint(
+    public ForwardMqEndpoint(
             @Value("${rabbitmq.server.forward.host}") String host,
             @Value("${rabbitmq.server.forward.port}") int port,
             @Value("${rabbitmq.server.forward.username}") String username,
@@ -19,4 +19,5 @@ public class CsfEndpoint extends MqEndpoint {
     ) {
         super.setConnectionFactory(host, port, username, password, virtualHost);
     }
+
 }

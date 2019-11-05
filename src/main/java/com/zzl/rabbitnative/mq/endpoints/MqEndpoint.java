@@ -19,11 +19,11 @@ public class MqEndpoint {
 
     // 配置 connection factory
     public void setConnectionFactory(
-        String host,
-        int port,
-        String username,
-        String password,
-        String virtualHost
+            String host,
+            int port,
+            String username,
+            String password,
+            String virtualHost
     ) {
         factory = new ConnectionFactory();
         factory.setHost(host);
@@ -34,47 +34,29 @@ public class MqEndpoint {
     }
 
     // 获取 Connection
-    public Connection getConnection() {
-        Connection connection = null;
-        try {
-            connection = factory.newConnection();
-        } catch (IOException | TimeoutException e) {
-            e.printStackTrace();
-        }
+    public Connection getConnection() throws IOException, TimeoutException {
+        Connection connection = factory.newConnection();
         this.connection = connection;
         return connection;
     }
 
     // 获取 channel
-    public Channel getChannel() {
+    public Channel getChannel() throws IOException, TimeoutException {
         Connection connection = getConnection();
-        Channel channel = null;
-        try {
-            channel = connection.createChannel();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+        Channel channel = connection.createChannel();
         this.channel = channel;
         return channel;
     }
 
     // 关闭流
-    public void close() {
+    public void close() throws IOException, TimeoutException {
         // 关闭 channel
-        if(channel != null && channel.isOpen()){
-            try {
-                channel.close();
-            } catch (IOException | TimeoutException e) {
-                e.printStackTrace();
-            }
+        if (channel != null && channel.isOpen()) {
+            channel.close();
         }
         // 关闭 connection
-        if(connection != null && connection.isOpen()){
-            try {
-                connection.close();
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
+        if (connection != null && connection.isOpen()) {
+            connection.close();
         }
     }
 }

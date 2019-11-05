@@ -4,6 +4,7 @@ import com.rabbitmq.client.Channel;
 import com.zzl.rabbitnative.mq.endpoints.MqEndpoint;
 
 import java.io.IOException;
+import java.util.concurrent.TimeoutException;
 
 /**
  * Created by zhangzhaolin on 2019/11/5.
@@ -17,17 +18,9 @@ public class BaseMqSender implements MqSender {
     }
 
     @Override
-    public void send(String exchangeName, String routingKey, String message) {
-        Channel channel = null;
-        try {
-            channel = endpoint.getChannel();
-            channel.basicPublish(exchangeName, routingKey, null, message.getBytes());
-        } catch (IOException e) {
-            e.printStackTrace();
-        }finally {
-            if (endpoint != null) {
-                endpoint.close();
-            }
-        }
+    public void send(String exchangeName, String routingKey, String message) throws IOException, TimeoutException {
+        Channel channel = endpoint.getChannel();
+        channel.basicPublish(exchangeName, routingKey, null, message.getBytes());
+        endpoint.close();
     }
 }
