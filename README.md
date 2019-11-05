@@ -29,7 +29,7 @@
         
 ```
 
-## 2. 相关基类与接口
+## 2. 相关类与接口
 
 1. `MqEndpoint`：endpoint基类。每一个MQ server对应一个endpoint。
 2. `MqListener`：监听器（消费者）接口，定义监听方式。
