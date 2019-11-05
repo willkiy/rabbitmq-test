@@ -9,4 +9,5 @@ public class MqConst {
     public static final String EXCHANGE_KEY = "exchange";
     public static final String ROUTING_KEY = "routing-key";
     public static final String CONSUMER_KEY = "consumer";
+    public static final String LISTENER_CLASSPATH = "com.zzl.rabbitnative.mq.listeners.";
 }

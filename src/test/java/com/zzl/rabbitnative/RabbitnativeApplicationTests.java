@@ -22,7 +22,6 @@ class RabbitnativeApplicationTests {
     @Test
     public void test() throws Exception {
         bssMqSender.sendToBss("hello bss");
-        productMqSender.sendToProduct("cke", "hello cke");
     }
 
 }

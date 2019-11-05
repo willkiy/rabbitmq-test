@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.stereotype.Component;
 
+import java.lang.reflect.Constructor;
 import java.util.Map;
 
 /**
@@ -30,15 +31,18 @@ public class CsfMqListener implements MqListener {
             String exchangeName = map.get(MqConst.EXCHANGE_KEY);
             String queueName = map.get(MqConst.QUEUE_KEY);
             String routingKey = map.get(MqConst.ROUTING_KEY);
-            String consumerName = map.get(MqConst.CONSUMER_KEY);
+            String consumerName = MqConst.LISTENER_CLASSPATH + map.get(MqConst.CONSUMER_KEY);
             // 声明并绑定
             Channel channel = endpoint.getChannel();
             channel.exchangeDeclare(exchangeName, "topic", true);
             channel.queueDeclare(queueName, true, false, false, null);
             channel.queueBind(queueName, exchangeName, routingKey);
             // 开启监听
+
             Class consumerClass = Class.forName(consumerName);
-            channel.basicConsume(queueName, true,"", (Consumer) consumerClass.newInstance());
+            Constructor constructor = consumerClass.getConstructor(Channel.class);
+            DefaultConsumer consumer = (DefaultConsumer) constructor.newInstance(channel);
+            channel.basicConsume(queueName, true,"", consumer);
         }
     }
 
